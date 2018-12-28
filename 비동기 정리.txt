@@ -1,0 +1,53 @@
+비동기 기술
+
+서버와 클라이언트가 실시간으로 요청,응답 을 하지만 url은 안변해
+화면갱신되지않아. reflash없어
+
+
+필요한것: 
+
+서버의 응답하는 로직
+그리고
+자바 스크립트의 비동기 처리 전담 객체! XMLHttpRequest
+=> new Object로 생성
+
+data = {
+name: "dd",
+age:10
+}
+
+
+XMLHttpRequest의 기능은 뭘까요~~?
+서버에 요청 + 서버로부터 응답되는 데이터도 획득!
+응답상태를 번호로 값 획득!!  => 200, 404, 500
+200은 성공
+404는 서버에 요청되는 url자원이 업을때
+500는 서버시스템 문제!
+
+onreadystatechange : 응답을 자동 감지.  응답이 오면 함수 호출!
+readystate: 0~4
+
+2=요처완료
+4=응답완료
+
+비동기2번버튼 누르면 (onclick="ajaxReqResMy")
+function ajaxReqResMy() {
+	var xhttp = new XMLHttpRequest();   뉴 오브젝트 생성
+	xhttp.onreadystatechange = function() { 응답오면 함수호출!! 
+	if ( this.readyState==4 && this.status==200) {
+		응답 완료(4)이고, 응답 성공(200)인 상태!
+	data = this.responseText;
+	data=eval('('+data+')');
+	document.getElementById("myDataView").innerHTML=data.name;
+
+
+
+
+
+
+
+
+
+
+
+
